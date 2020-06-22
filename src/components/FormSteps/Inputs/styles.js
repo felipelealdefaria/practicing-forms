@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField'
 
 export const Input = styled(TextField)`
-  margin: 20px 10px 0 10px !important;
+  margin: 20px 10px 10px 10px !important;
   width: ${(props) => (props.width ? `${props.width}%` : 'inherit')} !important;
 
   .MuiOutlinedInput-root {

@@ -1,22 +1,25 @@
+/* eslint-disable react/button-has-type */
 import React from 'react'
-import { message } from 'antd'
 import { useForm } from 'react-hook-form'
 import { BasicInput } from '../Inputs'
 import { schema } from '../../../utils'
 import { TitleSection, Form } from './FormIdentification.styles'
+import { useFormDataContext } from '../../../context/FormDataContext'
 
 export default function FormIdentification() {
+  const { nextStep, setUserData } = useFormDataContext()
   const { handleSubmit, errors, register } = useForm({
     validationSchema: schema,
   })
 
-  const onSubmit = () => {
-    message.success('Processing complete!')
-    // console.log(data)
+  const onSubmit = (data) => {
+    console.log(data)
+    setUserData(data)
+    nextStep()
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form>
       <TitleSection>Identificação</TitleSection>
       <>
         <BasicInput
@@ -141,7 +144,19 @@ export default function FormIdentification() {
           placeholder="Celular"
         />
       </>
-      {/* <input type="submit" /> */}
+      <div
+        className="steps-action"
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginTop: '40px',
+        }}
+      >
+        <button type="primary" onClick={handleSubmit(onSubmit)}>
+          Próximo
+        </button>
+      </div>
     </Form>
   )
 }

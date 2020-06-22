@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Steps, Button } from 'antd'
+import React from 'react'
+import { Steps } from 'antd'
 import FormPayment from './FormPayment'
 import PurchaseResume from './PurchaseResume'
 import FormIdentification from './FormIdentification'
 import { Container, StepsWrapper, FormWrapper } from './FormSteps.styles'
+import { useFormDataContext } from '../../context/FormDataContext'
 
 const { Step } = Steps
 
@@ -23,32 +24,21 @@ const steps = [
 ]
 
 export default function FormSteps() {
-  const [current, setCurrent] = useState(0)
-
-  const next = () => {
-    const aux = current + 1
-    setCurrent(aux)
-  }
-
-  const prev = () => {
-    const aux = current - 1
-    setCurrent(aux)
-  }
-
+  const { stepCurrent } = useFormDataContext()
   return (
     <Container>
       <StepsWrapper>
-        <Steps current={current}>
+        <Steps current={stepCurrent}>
           {steps.map((item) => (
             <Step key={item.title} title={item.title} />
           ))}
         </Steps>
 
         <div className="steps-content">
-          <FormWrapper>{steps[current].content}</FormWrapper>
+          <FormWrapper>{steps[stepCurrent].content}</FormWrapper>
         </div>
 
-        <div className="steps-action">
+        {/* <div className="steps-action">
           {current > 0 && (
             <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
               Voltar
@@ -62,7 +52,7 @@ export default function FormSteps() {
           {current === steps.length - 1 && (
             <Button type="submit">Finalizar</Button>
           )}
-        </div>
+        </div> */}
       </StepsWrapper>
     </Container>
   )

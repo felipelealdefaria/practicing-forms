@@ -1,6 +1,4 @@
 import React from 'react'
-// import { useForm } from 'react-hook-form'
-// import { schema } from '../../../utils'
 import { Input, Error } from './styles'
 
 export default function BasicInput({
@@ -12,10 +10,6 @@ export default function BasicInput({
   register,
   errors,
 }) {
-  // const { errors, register } = useForm({
-  //   validationSchema: schema,
-  // })
-
   return (
     <>
       <Input
