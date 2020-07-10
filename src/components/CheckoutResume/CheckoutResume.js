@@ -1,5 +1,5 @@
 import React from 'react'
-// import ApplyCoupon from '../ApplyCoupon'
+import ApplyCoupon from './ApplyCoupon'
 import {
   Container,
   InfoResume,
@@ -18,7 +18,7 @@ export default function CheckoutResume() {
           title="Resmed"
         />
         <ProductTitle>Extensivo Sanar Residência Médica - R1</ProductTitle>
-        {/* <ApplyCoupon /> */}
+        <ApplyCoupon />
         <ProductPrice>R$ 1.919,00</ProductPrice>
       </InfoResume>
     </Container>

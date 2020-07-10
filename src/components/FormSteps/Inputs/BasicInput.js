@@ -1,19 +1,19 @@
 import React from 'react'
-import { Input, Error } from './styles'
+import { Input, Error, InputWrapper } from './styles'
 
 export default function BasicInput({
   width,
   type,
   name,
   label,
-  placeholder,
-  register,
   errors,
+  register,
+  colMobile,
+  placeholder,
 }) {
   return (
-    <>
+    <InputWrapper width={width} colMobile={colMobile}>
       <Input
-        width={width}
         type={type}
         name={name}
         label={label}
@@ -22,6 +22,6 @@ export default function BasicInput({
         placeholder={placeholder}
       />
       {errors[name] && <Error>{errors[name].message}</Error>}
-    </>
+    </InputWrapper>
   )
 }

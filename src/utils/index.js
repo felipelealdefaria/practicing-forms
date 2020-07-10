@@ -6,10 +6,10 @@ export const schema = yup.object().shape({
   // firstName: yup.string().required('This field is required'),
   // lastName: yup.string().required('This field is required'),
   // email: yup.string().email('Invalid email').required('This field is required'),
-  fullName: yup.string().required('This field is required'),
-  cpf: yup.string().required('This field is required'),
-  email: yup.string().email('Invalid email'),
-  confirmEmail: yup.string().email('Invalid email'),
+  // fullName: yup.string().required('This field is required'),
+  // cpf: yup.string().required('This field is required'),
+  // email: yup.string().email('Invalid email'),
+  // confirmEmail: yup.string().email('Invalid email'),
 })
 
 export function setLocalStorage(key, data) {
