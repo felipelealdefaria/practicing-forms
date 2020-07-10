@@ -6,10 +6,10 @@ import { CheckoutResume, FormSteps } from '../../components'
 function Main() {
   return (
     <Container>
-      <ColCardForm span={15}>
+      <ColCardForm xs={24} sm={24} md={24} lg={15} xl={15}>
         <FormSteps />
       </ColCardForm>
-      <Col span={9}>
+      <Col xs={24} sm={24} md={24} lg={9} xl={9}>
         <CheckoutResume />
       </Col>
     </Container>
