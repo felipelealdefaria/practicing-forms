@@ -15,12 +15,32 @@ export const Container = styled.div`
   }
 `
 
+export const FormWrapper = styled.div`
+  /* padding: 15px; */
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+`
 export const StepsWrapper = styled.div`
   width: 100%;
   div.ant-steps {
     margin-bottom: 60px;
     @media (max-width: 768px) {
       margin: 0;
+    }
+  }
+  .ant-steps-item.ant-steps-item-finish {
+    .ant-steps-item-icon {
+      border-color: #06986d;
+      > .ant-steps-icon {
+        color: #06986d;
+      }
+    }
+    > .ant-steps-item-container
+      > .ant-steps-item-content
+      > .ant-steps-item-title::after {
+      background-color: #06986d;
     }
   }
   .ant-steps-item-process .ant-steps-item-icon {
@@ -62,12 +82,4 @@ export const StepsWrapper = styled.div`
       }
     }
   }
-`
-
-export const FormWrapper = styled.div`
-  /* padding: 15px; */
-  display: flex;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
 `
