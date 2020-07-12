@@ -40,8 +40,8 @@ export const Error = styled.p`
   margin: 3px 0px 0px 3px;
 `
 export const InputWrapper = styled.div`
-  margin: 15px 10px;
   display: flex;
+  padding: 12px 10px;
   position: relative;
   width: ${({ width }) => (width ? `${width}%` : '100%')};
   /* width: 100%; */
