@@ -15,6 +15,27 @@ export const Container = styled.div`
   }
 `
 
+export const TitleSection = styled.h3`
+  color: #707070;
+  font-size: 28px;
+  text-align: left;
+  margin: 25px 0 0 0;
+  @media (max-width: 768px) {
+    font-size: 22px;
+    text-align: center;
+  }
+`
+
+export const FlexButtons = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 40px;
+  justify-content: flex-end;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`
+
 export const FormWrapper = styled.div`
   /* padding: 15px; */
   display: flex;

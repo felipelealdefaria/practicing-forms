@@ -3,15 +3,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { BasicInput } from '../Inputs'
 import { schema } from '../../../utils'
+import { ButtonNext } from '../Buttons'
+import { FlexButtons, TitleSection } from '../FormSteps.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
-import {
-  TitleSection,
-  Form,
-  ColMobile,
-  FlexInput,
-  FlexButton,
-  ButtonStep,
-} from './FormIdentification.styles'
+import { Form, ColMobile, FlexInput } from './FormIdentification.styles'
 
 export default function FormIdentification() {
   const { nextStep, setUserData } = useFormDataContext()
@@ -166,11 +161,9 @@ export default function FormIdentification() {
           placeholder="Celular"
         />
       </FlexInput>
-      <FlexButton>
-        <ButtonStep type="primary" onClick={handleSubmit(onSubmit)}>
-          Próximo
-        </ButtonStep>
-      </FlexButton>
+      <FlexButtons>
+        <ButtonNext title="Próximo" onClick={handleSubmit(onSubmit)} />
+      </FlexButtons>
     </Form>
   )
 }
