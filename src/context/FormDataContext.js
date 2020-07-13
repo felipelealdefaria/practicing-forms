@@ -7,8 +7,9 @@ const FormDataContext = createContext('')
 export const useFormDataContext = () => useContext(FormDataContext)
 
 function FormDataProvider({ children }) {
-  const [stepCurrent, setStepCurrent] = useState(0)
   const [userData, setUserData] = useState({})
+  const [payMethod, setPayMethod] = useState(2)
+  const [stepCurrent, setStepCurrent] = useState(1)
 
   const nextStep = () => {
     const aux = stepCurrent + 1
@@ -34,6 +35,8 @@ function FormDataProvider({ children }) {
       value={{
         userData,
         setUserData,
+        payMethod,
+        setPayMethod,
         stepCurrent,
         setStepCurrent,
         nextStep,

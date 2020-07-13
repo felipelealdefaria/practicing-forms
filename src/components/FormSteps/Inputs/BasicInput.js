@@ -1,27 +1,24 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react'
 import { Input, Error, InputWrapper } from './styles'
 
-export default function BasicInput({
-  width,
-  type,
-  name,
-  label,
-  errors,
-  register,
-  colMobile,
-  placeholder,
-}) {
+export default function BasicInput(props) {
   return (
-    <InputWrapper width={width} colMobile={colMobile}>
+    <InputWrapper width={props.width} colMobile={props.colMobile}>
       <Input
-        type={type}
-        name={name}
-        label={label}
+        type={props.type}
+        name={props.name}
         variant="outlined"
-        inputRef={register}
-        placeholder={placeholder}
+        label={props.label}
+        value={props.value}
+        onFocus={props.onFocus}
+        onChange={props.onChange}
+        inputRef={props.register}
+        placeholder={props.placeholder}
       />
-      {errors[name] && <Error>{errors[name].message}</Error>}
+      {props.errors[props.name] && (
+        <Error>{props.errors[props.name].message}</Error>
+      )}
     </InputWrapper>
   )
 }

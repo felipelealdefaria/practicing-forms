@@ -3,6 +3,7 @@ import 'antd/dist/antd.css'
 import ReactDOM from 'react-dom'
 import Main from './pages/Main'
 import * as serviceWorker from './serviceWorker'
+import 'react-credit-cards/es/styles-compiled.css'
 import FormDataContext from './context/FormDataContext'
 
 ReactDOM.render(
