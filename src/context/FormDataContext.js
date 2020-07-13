@@ -8,8 +8,8 @@ export const useFormDataContext = () => useContext(FormDataContext)
 
 function FormDataProvider({ children }) {
   const [userData, setUserData] = useState({})
-  const [payMethod, setPayMethod] = useState(2)
-  const [stepCurrent, setStepCurrent] = useState(1)
+  const [payMethod, setPayMethod] = useState(0)
+  const [stepCurrent, setStepCurrent] = useState(0)
 
   const nextStep = () => {
     const aux = stepCurrent + 1
