@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { BasicInput } from '../../../Inputs'
 import { schema } from '../../../../../utils'
-import { Form, FlexInput } from './CreditCardForm.styles'
+import { Form, FlexInput, Container, TitleForm } from './CreditCardForm.styles'
 
 export default function CreditCardForm() {
   const { errors, register } = useForm({
@@ -29,69 +29,72 @@ export default function CreditCardForm() {
   }
 
   return (
-    <Form>
-      <Col span={12}>
-        <BasicInput
-          type="text"
-          name="name"
-          errors={errors}
-          value={card.name}
-          register={register}
-          onFocus={handleInputFocus}
-          onChange={handleInputChange}
-          placeholder="LUIS F L FARIA"
-          label="Nome impresso no cartão"
-        />
-
-        <BasicInput
-          name="number"
-          type="tel"
-          errors={errors}
-          value={card.number}
-          register={register}
-          label="Número do cartão"
-          onFocus={handleInputFocus}
-          onChange={handleInputChange}
-          placeholder="0000 0000 0000 0000"
-        />
-
-        <FlexInput>
+    <Container>
+      <TitleForm>Dados do cartão:</TitleForm>
+      <Form>
+        <Col span={12}>
           <BasicInput
-            width={50}
-            type="tel"
-            name="expiry"
+            type="text"
+            name="name"
             errors={errors}
-            placeholder="00/00"
-            value={card.expiry}
-            register={register}
-            label="Validade do Cartão"
-            onFocus={handleInputFocus}
-            onChange={handleInputChange}
-          />
-
-          <BasicInput
-            width={50}
-            name="cvc"
-            type="tel"
-            label="CVC"
-            errors={errors}
-            value={card.cvc}
-            placeholder="XXX"
+            value={card.name}
             register={register}
             onFocus={handleInputFocus}
             onChange={handleInputChange}
+            placeholder="LUIS F L FARIA"
+            label="Nome impresso no cartão"
           />
-        </FlexInput>
-      </Col>
-      <Col span={12}>
-        <Cards
-          cvc={card.cvc}
-          name={card.name}
-          expiry={card.expiry}
-          focused={card.focus}
-          number={card.number}
-        />
-      </Col>
-    </Form>
+
+          <BasicInput
+            name="number"
+            type="tel"
+            errors={errors}
+            value={card.number}
+            register={register}
+            label="Número do cartão"
+            onFocus={handleInputFocus}
+            onChange={handleInputChange}
+            placeholder="0000 0000 0000 0000"
+          />
+
+          <FlexInput>
+            <BasicInput
+              width={50}
+              type="tel"
+              name="expiry"
+              errors={errors}
+              placeholder="00/00"
+              value={card.expiry}
+              register={register}
+              label="Validade do Cartão"
+              onFocus={handleInputFocus}
+              onChange={handleInputChange}
+            />
+
+            <BasicInput
+              width={50}
+              name="cvc"
+              type="tel"
+              label="CVC"
+              errors={errors}
+              value={card.cvc}
+              placeholder="XXX"
+              register={register}
+              onFocus={handleInputFocus}
+              onChange={handleInputChange}
+            />
+          </FlexInput>
+        </Col>
+        <Col span={12}>
+          <Cards
+            cvc={card.cvc}
+            name={card.name}
+            expiry={card.expiry}
+            focused={card.focus}
+            number={card.number}
+          />
+        </Col>
+      </Form>
+    </Container>
   )
 }
