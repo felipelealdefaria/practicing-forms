@@ -3,8 +3,8 @@ import { Steps } from 'antd'
 import FormPayment from './FormPayment'
 import PurchaseResume from './PurchaseResume'
 import FormIdentification from './FormIdentification'
-import { Container, StepsWrapper, FormWrapper } from './FormSteps.styles'
 import { useFormDataContext } from '../../context/FormDataContext'
+import { Container, StepsWrapper, FormWrapper } from './FormSteps.styles'
 
 const { Step } = Steps
 
