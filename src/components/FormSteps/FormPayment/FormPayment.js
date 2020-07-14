@@ -1,12 +1,29 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
+import { schema } from '../../../utils'
 import { CreditCardMethod } from './Methods'
-import { ButtonPrev, ButtonNext, ButtonPayMethod } from '../Buttons'
-import { FlexButtons, TitleSection } from '../FormSteps.styles'
+import { ButtonPayMethod, ButtonNext, ButtonPrev } from '../Buttons'
+import { TitleSection, FlexButtons } from '../FormSteps.styles'
 import { Container, WrapperButtons } from './FormPayment.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
 
 export default function FormPayment() {
-  const { prevStep, nextStep, payMethod, setPayMethod } = useFormDataContext()
+  const {
+    nextStep,
+    prevStep,
+    payMethod,
+    setUserData,
+    setPayMethod,
+  } = useFormDataContext()
+  const { handleSubmit, errors, register } = useForm({
+    validationSchema: schema,
+  })
+
+  const onSubmit = (data) => {
+    console.log(data)
+    setUserData((oldData) => ({ ...oldData, payment: data }))
+    nextStep()
+  }
 
   return (
     <Container>
@@ -35,19 +52,21 @@ export default function FormPayment() {
           />
         </WrapperButtons>
       )}
-
-      {/* {payMethod === 1 && <BoletoMethod />} */}
-      {payMethod === 2 && <CreditCardMethod />}
-      {/* {payMethod === 3 && <CreditCardBoletoMethod />}
-      {payMethod === 4 && <TwoCreditCardMethod />}
-      {payMethod === 5 && <FinancingMethod />} */}
-
-      <FlexButtons>
-        <ButtonPrev title="Voltar" onClick={() => prevStep()} />
-        {payMethod !== 0 && (
-          <ButtonNext title="Próximo" onClick={() => nextStep()} />
+      <>
+        {/* {payMethod === 1 && <BoletoMethod />} */}
+        {payMethod === 2 && (
+          <CreditCardMethod errors={errors} register={register} />
         )}
-      </FlexButtons>
+        {/* {payMethod === 3 && <CreditCardBoletoMethod errors={errors} register={register} />}
+        {payMethod === 4 && <TwoCreditCardMethod errors={errors} register={register} />}
+        {payMethod === 5 && <FinancingMethod />} */}
+        <FlexButtons>
+          <ButtonPrev title="Voltar" onClick={() => prevStep()} />
+          {payMethod !== 0 && (
+            <ButtonNext title="Próximo" onClick={handleSubmit(onSubmit)} />
+          )}
+        </FlexButtons>
+      </>
     </Container>
   )
 }
