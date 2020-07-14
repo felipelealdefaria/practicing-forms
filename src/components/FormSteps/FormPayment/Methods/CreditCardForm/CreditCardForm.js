@@ -1,16 +1,10 @@
 import { Col } from 'antd'
 import Cards from 'react-credit-cards'
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { BasicInput } from '../../../Inputs'
-import { schema } from '../../../../../utils'
 import { Form, FlexInput, Container, TitleForm } from './CreditCardForm.styles'
 
-export default function CreditCardForm() {
-  const { errors, register } = useForm({
-    validationSchema: schema,
-  })
-
+export default function CreditCardForm({ errors, register }) {
   const [card, setCard] = useState({
     cvc: '',
     expiry: '',
