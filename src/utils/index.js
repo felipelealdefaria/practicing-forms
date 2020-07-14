@@ -3,13 +3,28 @@ import axios from 'axios'
 import * as yup from 'yup'
 
 export const schema = yup.object().shape({
-  // firstName: yup.string().required('This field is required'),
-  // lastName: yup.string().required('This field is required'),
-  // email: yup.string().email('Invalid email').required('This field is required'),
-  // fullName: yup.string().required('This field is required'),
-  // cpf: yup.string().required('This field is required'),
-  // email: yup.string().email('Invalid email'),
-  // confirmEmail: yup.string().email('Invalid email'),
+  fullName: yup.string().required('Este campo é obrigatório'),
+  cpf: yup.string().required('Este campo é obrigatório'),
+  email: yup
+    .string()
+    .email('Email inválido')
+    .required('Este campo é obrigatório'),
+  confirmEmail: yup
+    .string()
+    .email('Invalid email')
+    .test('equal', 'O e-mail deve ser o mesmo', function (val) {
+      const ref = yup.ref('email')
+      return val === this.resolve(ref)
+    })
+    .required('Este campo é obrigatório'),
+  zipCode: yup.string().required('Este campo é obrigatório'),
+  street: yup.string().required('Este campo é obrigatório'),
+  numberStreet: yup.string().required('Este campo é obrigatório'),
+  complement: yup.string().required('Este campo é obrigatório'),
+  neighborhood: yup.string().required('Este campo é obrigatório'),
+  city: yup.string().required('Este campo é obrigatório'),
+  uf: yup.string().required('Este campo é obrigatório'),
+  phone: yup.string().required('Este campo é obrigatório'),
 })
 
 export function setLocalStorage(key, data) {
