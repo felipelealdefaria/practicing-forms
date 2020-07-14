@@ -1,5 +1,7 @@
 import React from 'react'
 import { Steps } from 'antd'
+// import { useForm } from 'react-hook-form'
+// import { schema } from '../../utils'
 import FormPayment from './FormPayment'
 import PurchaseResume from './PurchaseResume'
 import FormIdentification from './FormIdentification'
@@ -8,23 +10,37 @@ import { Container, StepsWrapper, FormWrapper } from './FormSteps.styles'
 
 const { Step } = Steps
 
-const steps = [
-  {
-    title: 'Dados',
-    content: <FormIdentification />,
-  },
-  {
-    title: 'Pagamento',
-    content: <FormPayment />,
-  },
-  {
-    title: 'Revisão',
-    content: <PurchaseResume />,
-  },
-]
-
 export default function FormSteps() {
   const { stepCurrent } = useFormDataContext()
+  // const { handleSubmit } = useForm({
+  //   validationSchema: schema,
+  // })
+
+  const steps = [
+    {
+      title: 'Dados',
+      content: <FormIdentification />,
+    },
+    {
+      title: 'Pagamento',
+      content: <FormPayment />,
+    },
+    {
+      title: 'Revisão',
+      content: <PurchaseResume />,
+    },
+  ]
+
+  // const onSubmit = (data) => {
+  //   console.log(data)
+  // }
+
+  // const handleNextStepSubmit = () => {
+  //   const data = handleSubmit(onSubmit)
+  //   console.log(data)
+  //   nextStep()
+  // }
+
   return (
     <Container>
       <StepsWrapper>
@@ -38,21 +54,17 @@ export default function FormSteps() {
           <FormWrapper>{steps[stepCurrent].content}</FormWrapper>
         </div>
 
-        {/* <div className="steps-action">
-          {current > 0 && (
-            <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-              Voltar
-            </Button>
+        {/* <FlexButtons>
+          {stepCurrent > 0 && (
+            <ButtonPrev title="Voltar" onClick={() => prevStep()} />
           )}
-          {current < steps.length - 1 && (
-            <Button type="primary" onClick={() => next()}>
-              Próximo
-            </Button>
+          {stepCurrent < steps.length - 1 && (
+            <ButtonNext title="Próximo" onClick={() => handleNextStepSubmit()} />
           )}
-          {current === steps.length - 1 && (
-            <Button type="submit">Finalizar</Button>
+          {stepCurrent === steps.length - 1 && (
+            <ButtonNext title="Finalizar" onClick={handleSubmit(onSubmit)} />
           )}
-        </div> */}
+        </FlexButtons> */}
       </StepsWrapper>
     </Container>
   )
