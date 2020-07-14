@@ -9,14 +9,15 @@ import { useFormDataContext } from '../../../context/FormDataContext'
 import { Form, ColMobile, FlexInput } from './FormIdentification.styles'
 
 export default function FormIdentification() {
-  const { nextStep, setUserData } = useFormDataContext()
+  const { setUserData, nextStep, userData } = useFormDataContext()
+  const { user } = userData
   const { handleSubmit, errors, register } = useForm({
     validationSchema: schema,
   })
 
   const onSubmit = (data) => {
     console.log(data)
-    setUserData(data)
+    setUserData((oldData) => ({ ...oldData, user: data }))
     nextStep()
   }
 
@@ -31,6 +32,7 @@ export default function FormIdentification() {
             name="fullName"
             errors={errors}
             register={register}
+            value={user.fullName}
             label="Nome completo"
             placeholder="Nome completo"
           />
@@ -41,6 +43,7 @@ export default function FormIdentification() {
             type="text"
             label="CPF"
             errors={errors}
+            value={user.cpf}
             register={register}
             placeholder="000.0000.000-00"
           />
@@ -52,6 +55,7 @@ export default function FormIdentification() {
             name="email"
             label="E-mail"
             errors={errors}
+            value={user.email}
             register={register}
             placeholder="Email"
           />
@@ -62,6 +66,8 @@ export default function FormIdentification() {
             errors={errors}
             register={register}
             name="confirmEmail"
+            // value={user.confirmEmail}
+            // onChange={() => {}}
             label="Confirmação do e-mail"
             placeholder="Confirmar e-mail"
           />
@@ -71,11 +77,12 @@ export default function FormIdentification() {
       <FlexInput>
         <BasicInput
           type="text"
-          name="cep"
+          name="zipCode"
           width={35}
           label="CEP"
           errors={errors}
           register={register}
+          value={user.zipCode}
           placeholder="000000-000"
         />
 
@@ -84,8 +91,9 @@ export default function FormIdentification() {
           type="text"
           name="street"
           errors={errors}
-          register={register}
           label="Logradouro"
+          value={user.street}
+          register={register}
           placeholder="Rua/Avenida..."
         />
       </FlexInput>
@@ -94,13 +102,14 @@ export default function FormIdentification() {
         <ColMobile>
           <BasicInput
             width={20}
-            colMobile={27}
             type="text"
+            colMobile={27}
             label="Número"
-            name="number-street"
             errors={errors}
+            name="numberStreet"
             register={register}
             placeholder="Número"
+            value={user.numberStreet}
           />
 
           <BasicInput
@@ -111,6 +120,7 @@ export default function FormIdentification() {
             register={register}
             name="complement"
             label="Complemento"
+            value={user.complement}
             placeholder="Complemento"
           />
         </ColMobile>
@@ -118,11 +128,12 @@ export default function FormIdentification() {
         <BasicInput
           width={30}
           type="text"
+          label="Bairro"
           errors={errors}
           register={register}
-          label="Bairro"
           name="neighborhood"
           placeholder="Bairro"
+          value={user.neighborhood}
         />
       </FlexInput>
 
@@ -135,6 +146,7 @@ export default function FormIdentification() {
             label="Cidade"
             colMobile={75}
             errors={errors}
+            value={user.city}
             register={register}
             placeholder="Cidade"
           />
@@ -146,8 +158,9 @@ export default function FormIdentification() {
             type="text"
             colMobile={22}
             errors={errors}
-            register={register}
+            value={user.uf}
             placeholder="UF"
+            register={register}
           />
         </ColMobile>
 
@@ -157,6 +170,7 @@ export default function FormIdentification() {
           name="phone"
           label="Celular"
           errors={errors}
+          value={user.phone}
           register={register}
           placeholder="Celular"
         />
