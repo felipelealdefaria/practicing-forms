@@ -2,8 +2,8 @@ import React from 'react'
 import { message } from 'antd'
 import { ButtonNext, ButtonPrev } from '../Buttons'
 import { TitleSection, FlexButtons } from '../FormSteps.styles'
-import { Container, ZebraGrid, DataRow } from './PurchaseResume.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
+import { Container, ZebraGrid, DataRow } from './PurchaseResume.styles'
 
 export default function PurchaseResume() {
   const { userData, prevStep } = useFormDataContext()
