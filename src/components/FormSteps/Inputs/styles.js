@@ -5,7 +5,7 @@ export const Input = styled(TextField)`
   width: 100% !important;
 
   label.Mui-focused {
-    color: #08845f;
+    color: #6c2732;
   }
 
   .MuiOutlinedInput-root {
@@ -19,7 +19,7 @@ export const Input = styled(TextField)`
       /* border-color: yellow; */
     }
     &.Mui-focused fieldset {
-      border-color: #06986d;
+      border-color: #6c2732;
     }
   }
 
@@ -48,5 +48,6 @@ export const InputWrapper = styled.div`
   @media (max-width: 768px) {
     width: ${({ colMobile }) => (colMobile ? `${colMobile}%` : '100%')};
     margin: 30px 0px;
+    padding: 0px;
   }
 `

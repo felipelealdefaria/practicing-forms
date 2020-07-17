@@ -11,14 +11,20 @@ export const Container = styled.div`
 `
 
 export const InfoResume = styled.div`
-  text-align: left;
+  width: 65%;
+  text-align: justify;
   @media (max-width: 768px) {
+    width: 100%;
     text-align: center;
   }
 `
 
 export const ResmedLogo = styled.img`
+  width: auto;
+  max-height: 300px;
+  border-radius: 50%;
   margin: 25px 0 25px 0;
+  /* background-color: #fff; */
   @media (max-width: 768px) {
     width: 60%;
     margin: 5px;
@@ -29,15 +35,32 @@ export const ResmedLogo = styled.img`
 export const ProductTitle = styled.h1`
   color: #707070;
   font-size: 22px;
-  margin: 25px 0 25px 0;
+  font-weight: 600px;
+  margin: 25px 0px 0px 0px;
   @media (max-width: 768px) {
-    margin: 15px 50px;
+    margin: 15px 30px;
     font-size: 18px;
   }
 `
 
+export const ProductDescription = styled.p`
+  color: #707070;
+  font-size: 18px;
+  margin: 10px 0 25px 0;
+  span {
+    font-size: 15px;
+  }
+  @media (max-width: 768px) {
+    margin: 15px 16px;
+    font-size: 15px;
+    span {
+      font-size: 13px;
+    }
+  }
+`
+
 export const ProductPrice = styled.p`
-  color: #06986d;
+  color: #6c2732;
   font-size: 46px;
   font-weight: bold;
   margin: 25px 0 25px 0;
@@ -46,6 +69,6 @@ export const ProductPrice = styled.p`
     font-size: 26px;
     padding: 5px 0px;
     border-radius: 7px;
-    background-color: #ddebe7;
+    background-color: #e8d7d7;
   }
 `

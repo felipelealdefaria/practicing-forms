@@ -1,16 +1,10 @@
 import { Col } from 'antd'
 import Cards from 'react-credit-cards'
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { BasicInput } from '../../../Inputs'
-import { schema } from '../../../../../utils'
 import { Form, FlexInput, Container, TitleForm } from './CreditCardForm.styles'
 
-export default function CreditCardForm() {
-  const { errors, register } = useForm({
-    validationSchema: schema,
-  })
-
+export default function CreditCardForm({ errors, register }) {
   const [card, setCard] = useState({
     cvc: '',
     expiry: '',
@@ -32,12 +26,12 @@ export default function CreditCardForm() {
     <Container>
       <TitleForm>Dados do cartão:</TitleForm>
       <Form>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <BasicInput
             type="text"
             name="name"
             errors={errors}
-            value={card.name}
+            value={card?.name}
             register={register}
             onFocus={handleInputFocus}
             onChange={handleInputChange}
@@ -49,7 +43,7 @@ export default function CreditCardForm() {
             name="number"
             type="tel"
             errors={errors}
-            value={card.number}
+            value={card?.number}
             register={register}
             label="Número do cartão"
             onFocus={handleInputFocus}
@@ -64,9 +58,9 @@ export default function CreditCardForm() {
               name="expiry"
               errors={errors}
               placeholder="00/00"
-              value={card.expiry}
+              value={card?.expiry}
               register={register}
-              label="Validade do Cartão"
+              label="Validade"
               onFocus={handleInputFocus}
               onChange={handleInputChange}
             />
@@ -77,7 +71,7 @@ export default function CreditCardForm() {
               type="tel"
               label="CVC"
               errors={errors}
-              value={card.cvc}
+              value={card?.cvc}
               placeholder="XXX"
               register={register}
               onFocus={handleInputFocus}
@@ -85,13 +79,13 @@ export default function CreditCardForm() {
             />
           </FlexInput>
         </Col>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Cards
-            cvc={card.cvc}
-            name={card.name}
-            expiry={card.expiry}
-            focused={card.focus}
-            number={card.number}
+            cvc={card?.cvc}
+            name={card?.name}
+            expiry={card?.expiry}
+            focused={card?.focus}
+            number={card?.number}
           />
         </Col>
       </Form>

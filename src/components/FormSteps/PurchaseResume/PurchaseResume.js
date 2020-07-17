@@ -1,30 +1,35 @@
 import React from 'react'
 import { TitleSection } from '../FormSteps.styles'
+import { useFormDataContext } from '../../../context/FormDataContext'
 import { Container, ZebraGrid, DataRow } from './PurchaseResume.styles'
 
 export default function PurchaseResume() {
+  const { userData } = useFormDataContext()
+  const { user } = userData
+  console.log(userData)
+
   return (
     <Container>
       <TitleSection>Dados</TitleSection>
       <ZebraGrid>
         <DataRow>
           <span>Nome</span>
-          <span>Luís Felipe Leal</span>
+          <span>{user?.fullName}</span>
         </DataRow>
         <DataRow>
           <span>Email</span>
-          <span>felipelealdefaria@gmail.com</span>
+          <span>{user?.email}</span>
         </DataRow>
         <DataRow>
           <span>CPF</span>
-          <span>999.999.999-99</span>
+          <span>{user?.cpf}</span>
         </DataRow>
       </ZebraGrid>
       <TitleSection>Entrega</TitleSection>
       <ZebraGrid>
         <DataRow>
           <span>CEP</span>
-          <span>85660-000</span>
+          <span>{user?.zipCode}</span>
         </DataRow>
         <DataRow>
           <span>Estimativa de entrega</span>
@@ -32,27 +37,27 @@ export default function PurchaseResume() {
         </DataRow>
         <DataRow>
           <span>Endereço</span>
-          <span>Rua Castro Alves</span>
+          <span>{user?.street}</span>
         </DataRow>
         <DataRow>
           <span>Complemento</span>
-          <span>Apto 302</span>
+          <span>{user?.complement}</span>
         </DataRow>
         <DataRow>
           <span>Bairro</span>
-          <span>Centro Norte</span>
+          <span>{user?.neighborhood}</span>
         </DataRow>
         <DataRow>
           <span>Cidade</span>
-          <span>Dois Vizinhos</span>
+          <span>{user?.city}</span>
         </DataRow>
         <DataRow>
           <span>UF</span>
-          <span>PR</span>
+          <span>{user?.uf}</span>
         </DataRow>
         <DataRow>
           <span>Celular</span>
-          <span>+55 (31) 99761-0524</span>
+          <span>{user.phone}</span>
         </DataRow>
       </ZebraGrid>
       <TitleSection>Pagamento</TitleSection>
