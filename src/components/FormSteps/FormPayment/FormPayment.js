@@ -1,29 +1,12 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
-import { schema } from '../../../utils'
 import { CreditCardMethod } from './Methods'
-import { ButtonPayMethod, ButtonNext, ButtonPrev } from '../Buttons'
-import { TitleSection, FlexButtons } from '../FormSteps.styles'
+import { ButtonPayMethod } from '../Buttons'
+import { TitleSection } from '../FormSteps.styles'
 import { Container, WrapperButtons } from './FormPayment.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
 
-export default function FormPayment() {
-  const {
-    nextStep,
-    prevStep,
-    payMethod,
-    setUserData,
-    setPayMethod,
-  } = useFormDataContext()
-  const { handleSubmit, errors, register } = useForm({
-    validationSchema: schema,
-  })
-
-  const onSubmit = (data) => {
-    console.log(data)
-    setUserData((oldData) => ({ ...oldData, payment: data }))
-    nextStep()
-  }
+export default function FormPayment({ errors, register }) {
+  const { payMethod, setPayMethod } = useFormDataContext()
 
   return (
     <Container>
@@ -60,12 +43,6 @@ export default function FormPayment() {
         {/* {payMethod === 3 && <CreditCardBoletoMethod errors={errors} register={register} />}
         {payMethod === 4 && <TwoCreditCardMethod errors={errors} register={register} />}
         {payMethod === 5 && <FinancingMethod />} */}
-        <FlexButtons>
-          <ButtonPrev title="Voltar" onClick={() => prevStep()} />
-          {payMethod !== 0 && (
-            <ButtonNext title="Próximo" onClick={handleSubmit(onSubmit)} />
-          )}
-        </FlexButtons>
       </>
     </Container>
   )

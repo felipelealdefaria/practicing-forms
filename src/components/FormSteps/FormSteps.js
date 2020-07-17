@@ -1,29 +1,41 @@
 import React from 'react'
-import { Steps } from 'antd'
-// import { useForm } from 'react-hook-form'
-// import { schema } from '../../utils'
+import { Steps, message } from 'antd'
+import { useForm } from 'react-hook-form'
+import { schema } from '../../utils'
 import FormPayment from './FormPayment'
 import PurchaseResume from './PurchaseResume'
+import { ButtonNext, ButtonPrev } from './Buttons'
 import FormIdentification from './FormIdentification'
 import { useFormDataContext } from '../../context/FormDataContext'
-import { Container, StepsWrapper, FormWrapper } from './FormSteps.styles'
+import {
+  Container,
+  StepsWrapper,
+  FormWrapper,
+  FlexButtons,
+} from './FormSteps.styles'
 
 const { Step } = Steps
 
 export default function FormSteps() {
-  const { stepCurrent } = useFormDataContext()
-  // const { handleSubmit } = useForm({
-  //   validationSchema: schema,
-  // })
+  const {
+    stepCurrent,
+    nextStep,
+    prevStep,
+    setUserData,
+    userData,
+  } = useFormDataContext()
+  const { handleSubmit, errors, register } = useForm({
+    validationSchema: schema,
+  })
 
   const steps = [
     {
       title: 'Dados',
-      content: <FormIdentification />,
+      content: <FormIdentification errors={errors} register={register} />,
     },
     {
       title: 'Pagamento',
-      content: <FormPayment />,
+      content: <FormPayment errors={errors} register={register} />,
     },
     {
       title: 'Revisão',
@@ -31,15 +43,19 @@ export default function FormSteps() {
     },
   ]
 
-  // const onSubmit = (data) => {
-  //   console.log(data)
-  // }
-
-  // const handleNextStepSubmit = () => {
-  //   const data = handleSubmit(onSubmit)
-  //   console.log(data)
-  //   nextStep()
-  // }
+  const onSubmit = (data) => {
+    if (stepCurrent === 0) {
+      console.log('user', data)
+      setUserData((oldData) => ({ ...oldData, user: data }))
+      nextStep()
+    } else {
+      console.log('payment', data)
+      setUserData((oldData) => ({ ...oldData, payment: data }))
+      nextStep()
+    }
+    // setUserData('teste')
+    console.log(userData)
+  }
 
   return (
     <Container>
@@ -54,17 +70,20 @@ export default function FormSteps() {
           <FormWrapper>{steps[stepCurrent].content}</FormWrapper>
         </div>
 
-        {/* <FlexButtons>
+        <FlexButtons>
           {stepCurrent > 0 && (
             <ButtonPrev title="Voltar" onClick={() => prevStep()} />
           )}
           {stepCurrent < steps.length - 1 && (
-            <ButtonNext title="Próximo" onClick={() => handleNextStepSubmit()} />
+            <ButtonNext title="Próximo" onClick={handleSubmit(onSubmit)} />
           )}
           {stepCurrent === steps.length - 1 && (
-            <ButtonNext title="Finalizar" onClick={handleSubmit(onSubmit)} />
+            <ButtonNext
+              title="Finalizar"
+              onClick={() => message.success('Processing complete!')}
+            />
           )}
-        </FlexButtons> */}
+        </FlexButtons>
       </StepsWrapper>
     </Container>
   )
