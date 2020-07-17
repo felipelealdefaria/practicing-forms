@@ -31,7 +31,7 @@ export default function FormIdentification({ errors, register }) {
             type="text"
             label="CPF"
             errors={errors}
-            // defaultValue={user?.cpf}
+            defaultValue={user?.cpf}
             register={register}
             placeholder="000.0000.000-00"
           />

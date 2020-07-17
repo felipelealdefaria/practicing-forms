@@ -16,6 +16,7 @@ export default function BasicInput(props) {
         inputRef={props.register}
         placeholder={props.placeholder}
         defaultValue={props.defaultValue}
+        autoComplete="off"
       />
       {props.errors[props.name] && (
         <Error>{props.errors[props.name].message}</Error>
