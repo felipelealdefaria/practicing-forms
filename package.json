@@ -1,6 +1,9 @@
 {
-  "name": "practicing-forms",
+  "name": "checkout-react-hook-form",
   "version": "0.1.0",
+  "repository": "https://github.com/felipelealdefaria/practicing-forms",
+  "description": "Application created in order to study a new alternative to work with forms in React. Use a lib react-hook-form to create a payment checkout (without the user being logged in).",
+  "author": "Luís Felipe Leal de Faria <felipelealdefaria@gmail.com> (https://github.com/felipelealdefaria)",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
@@ -11,7 +14,6 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.3.3",
     "axios": "^0.19.2",
-    "formik": "^2.1.4",
     "react": "^16.13.1",
     "react-credit-cards": "^0.8.3",
     "react-dom": "^16.13.1",
