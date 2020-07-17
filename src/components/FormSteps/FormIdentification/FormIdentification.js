@@ -1,25 +1,13 @@
 /* eslint-disable react/button-has-type */
 import React from 'react'
-import { useForm } from 'react-hook-form'
 import { BasicInput } from '../Inputs'
-import { schema } from '../../../utils'
-import { ButtonNext } from '../Buttons'
-import { FlexButtons, TitleSection } from '../FormSteps.styles'
+import { TitleSection } from '../FormSteps.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
 import { Form, ColMobile, FlexInput } from './FormIdentification.styles'
 
-export default function FormIdentification() {
-  const { setUserData, nextStep, userData } = useFormDataContext()
+export default function FormIdentification({ errors, register }) {
+  const { userData } = useFormDataContext()
   const { user } = userData
-  const { handleSubmit, errors, register } = useForm({
-    validationSchema: schema,
-  })
-
-  const onSubmit = (data) => {
-    console.log(data)
-    setUserData((oldData) => ({ ...oldData, user: data }))
-    nextStep()
-  }
 
   return (
     <Form>
@@ -32,7 +20,7 @@ export default function FormIdentification() {
             name="fullName"
             errors={errors}
             register={register}
-            value={user.fullName}
+            defaultValue={user?.fullName}
             label="Nome completo"
             placeholder="Nome completo"
           />
@@ -43,7 +31,7 @@ export default function FormIdentification() {
             type="text"
             label="CPF"
             errors={errors}
-            value={user.cpf}
+            // defaultValue={user?.cpf}
             register={register}
             placeholder="000.0000.000-00"
           />
@@ -55,7 +43,7 @@ export default function FormIdentification() {
             name="email"
             label="E-mail"
             errors={errors}
-            value={user.email}
+            defaultValue={user?.email}
             register={register}
             placeholder="Email"
           />
@@ -66,8 +54,7 @@ export default function FormIdentification() {
             errors={errors}
             register={register}
             name="confirmEmail"
-            // value={user.confirmEmail}
-            // onChange={() => {}}
+            // defaultValue={user?.confirmEmail}
             label="Confirmação do e-mail"
             placeholder="Confirmar e-mail"
           />
@@ -82,7 +69,7 @@ export default function FormIdentification() {
           label="CEP"
           errors={errors}
           register={register}
-          value={user.zipCode}
+          defaultValue={user?.zipCode}
           placeholder="000000-000"
         />
 
@@ -92,7 +79,7 @@ export default function FormIdentification() {
           name="street"
           errors={errors}
           label="Logradouro"
-          value={user.street}
+          defaultValue={user?.street}
           register={register}
           placeholder="Rua/Avenida..."
         />
@@ -109,7 +96,7 @@ export default function FormIdentification() {
             name="numberStreet"
             register={register}
             placeholder="Número"
-            value={user.numberStreet}
+            defaultValue={user?.numberStreet}
           />
 
           <BasicInput
@@ -120,7 +107,7 @@ export default function FormIdentification() {
             register={register}
             name="complement"
             label="Complemento"
-            value={user.complement}
+            defaultValue={user?.complement}
             placeholder="Complemento"
           />
         </ColMobile>
@@ -133,7 +120,7 @@ export default function FormIdentification() {
           register={register}
           name="neighborhood"
           placeholder="Bairro"
-          value={user.neighborhood}
+          defaultValue={user?.neighborhood}
         />
       </FlexInput>
 
@@ -146,7 +133,7 @@ export default function FormIdentification() {
             label="Cidade"
             colMobile={75}
             errors={errors}
-            value={user.city}
+            defaultValue={user?.city}
             register={register}
             placeholder="Cidade"
           />
@@ -158,7 +145,7 @@ export default function FormIdentification() {
             type="text"
             colMobile={22}
             errors={errors}
-            value={user.uf}
+            defaultValue={user?.uf}
             placeholder="UF"
             register={register}
           />
@@ -170,14 +157,13 @@ export default function FormIdentification() {
           name="phone"
           label="Celular"
           errors={errors}
-          value={user.phone}
+          defaultValue={user?.phone}
           register={register}
           placeholder="Celular"
         />
+        {/* {userData && userData} */}
       </FlexInput>
-      <FlexButtons>
-        <ButtonNext title="Próximo" onClick={handleSubmit(onSubmit)} />
-      </FlexButtons>
+      <input style={{ display: 'none' }} type="submit" />
     </Form>
   )
 }

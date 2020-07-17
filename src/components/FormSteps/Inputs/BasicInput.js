@@ -15,6 +15,7 @@ export default function BasicInput(props) {
         onChange={props.onChange}
         inputRef={props.register}
         placeholder={props.placeholder}
+        defaultValue={props.defaultValue}
       />
       {props.errors[props.name] && (
         <Error>{props.errors[props.name].message}</Error>

@@ -48,5 +48,6 @@ export const InputWrapper = styled.div`
   @media (max-width: 768px) {
     width: ${({ colMobile }) => (colMobile ? `${colMobile}%` : '100%')};
     margin: 30px 0px;
+    padding: 0px;
   }
 `
