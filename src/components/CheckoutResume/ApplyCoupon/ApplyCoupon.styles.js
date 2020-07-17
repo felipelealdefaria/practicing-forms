@@ -44,7 +44,7 @@ export const ApplyButton = styled.a`
   border: 1px solid #707070;
   :hover {
     color: #fff;
-    background-color: #06986d;
-    border: 1px solid #06986d;
+    background-color: #6c2732;
+    border: 1px solid #6c2732;
   }
 `

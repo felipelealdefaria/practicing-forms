@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   margin: 0;
   width: 90%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   /* align-items: center; */
   justify-content: center;
@@ -53,20 +53,20 @@ export const StepsWrapper = styled.div`
   }
   .ant-steps-item.ant-steps-item-finish {
     .ant-steps-item-icon {
-      border-color: #06986d;
+      border-color: #6c2732;
       > .ant-steps-icon {
-        color: #06986d;
+        color: #6c2732;
       }
     }
     > .ant-steps-item-container
       > .ant-steps-item-content
       > .ant-steps-item-title::after {
-      background-color: #06986d;
+      background-color: #6c2732;
     }
   }
   .ant-steps-item-process .ant-steps-item-icon {
-    background: #06986d;
-    border-color: #06986d;
+    background: #6c2732;
+    border-color: #6c2732;
   }
   @media (max-width: 528px) {
     .ant-steps-horizontal.ant-steps-label-horizontal {
@@ -89,8 +89,8 @@ export const StepsWrapper = styled.div`
         }
       }
       .ant-steps-item-process .ant-steps-item-icon {
-        background: #06986d;
-        border-color: #06986d;
+        background: #6c2732;
+        border-color: #6c2732;
       }
       .ant-steps-item-content {
         display: flex;
