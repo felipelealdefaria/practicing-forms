@@ -26,12 +26,12 @@ export default function CreditCardForm({ errors, register }) {
     <Container>
       <TitleForm>Dados do cartão:</TitleForm>
       <Form>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <BasicInput
             type="text"
             name="name"
             errors={errors}
-            value={card.name}
+            value={card?.name}
             register={register}
             onFocus={handleInputFocus}
             onChange={handleInputChange}
@@ -43,7 +43,7 @@ export default function CreditCardForm({ errors, register }) {
             name="number"
             type="tel"
             errors={errors}
-            value={card.number}
+            value={card?.number}
             register={register}
             label="Número do cartão"
             onFocus={handleInputFocus}
@@ -58,9 +58,9 @@ export default function CreditCardForm({ errors, register }) {
               name="expiry"
               errors={errors}
               placeholder="00/00"
-              value={card.expiry}
+              value={card?.expiry}
               register={register}
-              label="Validade do Cartão"
+              label="Validade"
               onFocus={handleInputFocus}
               onChange={handleInputChange}
             />
@@ -71,7 +71,7 @@ export default function CreditCardForm({ errors, register }) {
               type="tel"
               label="CVC"
               errors={errors}
-              value={card.cvc}
+              value={card?.cvc}
               placeholder="XXX"
               register={register}
               onFocus={handleInputFocus}
@@ -79,13 +79,13 @@ export default function CreditCardForm({ errors, register }) {
             />
           </FlexInput>
         </Col>
-        <Col span={12}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={12}>
           <Cards
-            cvc={card.cvc}
-            name={card.name}
-            expiry={card.expiry}
-            focused={card.focus}
-            number={card.number}
+            cvc={card?.cvc}
+            name={card?.name}
+            expiry={card?.expiry}
+            focused={card?.focus}
+            number={card?.number}
           />
         </Col>
       </Form>
