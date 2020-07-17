@@ -14,6 +14,7 @@ export const InfoResume = styled.div`
   width: 65%;
   text-align: justify;
   @media (max-width: 768px) {
+    width: 100%;
     text-align: center;
   }
 `
@@ -37,7 +38,7 @@ export const ProductTitle = styled.h1`
   font-weight: 600px;
   margin: 25px 0px 0px 0px;
   @media (max-width: 768px) {
-    margin: 15px 50px;
+    margin: 15px 30px;
     font-size: 18px;
   }
 `
@@ -50,7 +51,7 @@ export const ProductDescription = styled.p`
     font-size: 15px;
   }
   @media (max-width: 768px) {
-    margin: 15px 50px;
+    margin: 15px 16px;
     font-size: 15px;
     span {
       font-size: 13px;
@@ -68,6 +69,6 @@ export const ProductPrice = styled.p`
     font-size: 26px;
     padding: 5px 0px;
     border-radius: 7px;
-    background-color: #ddebe7;
+    background-color: #e8d7d7;
   }
 `
