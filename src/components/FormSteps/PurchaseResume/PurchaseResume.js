@@ -1,12 +1,10 @@
 import React from 'react'
-import { message } from 'antd'
-import { ButtonNext, ButtonPrev } from '../Buttons'
-import { TitleSection, FlexButtons } from '../FormSteps.styles'
+import { TitleSection } from '../FormSteps.styles'
 import { useFormDataContext } from '../../../context/FormDataContext'
 import { Container, ZebraGrid, DataRow } from './PurchaseResume.styles'
 
 export default function PurchaseResume() {
-  const { userData, prevStep } = useFormDataContext()
+  const { userData } = useFormDataContext()
   const { user } = userData
   console.log(userData)
 
@@ -69,13 +67,6 @@ export default function PurchaseResume() {
           <span>10x sem juros</span>
         </DataRow>
       </ZebraGrid>
-      <FlexButtons>
-        <ButtonPrev title="Voltar" onClick={() => prevStep()} />
-        <ButtonNext
-          title="Finalizar"
-          onClick={() => message.success('Processing complete!')}
-        />
-      </FlexButtons>
     </Container>
   )
 }
