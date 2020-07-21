@@ -5,7 +5,6 @@
 ----
 ## About
 
-Application created after a Rocketseat course. In this project developed with React Native, he addresses studies of native animations to simulate the experience of the original Nubank app.
 Application created in order to study a new alternative to work with forms in React. Use a lib react-hook-form to create a payment checkout (without the user being logged in).
 
 ----
